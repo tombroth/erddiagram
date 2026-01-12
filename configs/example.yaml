@@ -1,0 +1,10 @@
+database:
+  type: "postgresql"
+  host: "<hostname>"
+  port: 5432
+  username: "<username>"
+  password: "<password>"
+  database_name: "<database>"
+
+server:
+  port: 8080

@@ -1,0 +1,10 @@
+database:
+  type: "testType"
+  host: "testHost"
+  port: 9999
+  username: "testUser"
+  password: "testPass"
+  database_name: "testDb"
+
+server:
+  port: 8080

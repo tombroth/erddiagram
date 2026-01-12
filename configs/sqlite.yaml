@@ -1,0 +1,10 @@
+database:
+  type: "sqlite"
+  host: ""
+  port: 
+  username: ""
+  password: ""
+  database_name: "C:/temp/sqlite_test_file.sqlite"
+
+server:
+  port: 8080

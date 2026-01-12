@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>ER Diagram</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://bumbu.me/svg-pan-zoom/dist/svg-pan-zoom.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div id="left">
+        <h3>ER Diagram</h3>
+
+        <form id="connectForm">
+            <label>Driver
+                <select id="dbType" name="type">
+                    <option value="postgres">PostgreSQL</option>
+                    <option value="mysql">MySQL</option>
+                    <option value="sqlserver">SQL Server</option>
+                    <option value="godror">Oracle (godror)</option>
+                    <option value="sqlite">SQLite</option>
+                </select>
+            </label>
+
+            <div id="connFields">
+                <div class="row">
+                    <div class="small">
+                        <label>Host<input id="host" name="host" type="text" value="localhost"></label>
+                    </div>
+                    <div class="small">
+                        <label>Port<input id="port" name="port" type="number" value="5432"></label>
+                    </div>
+                </div>
+
+                <label>Username<input id="username" name="username" type="text"></label>
+                <label>Password<input id="password" name="password" type="password"></label>
+                <label>Database / Service<input id="database_name" name="database_name" type="text"></label>
+
+                <label>Or provide raw DSN (optional)<input id="dsn" name="dsn" type="text"
+                        placeholder="optional DSN string"></label>
+            </div> <!-- id="connFields" -->
+
+            <div style="display:flex;gap:8px;margin-top:8px">
+                <button id="connectBtn" type="button">Connect</button>
+                <button id="disconnectBtn" type="button">Disconnect</button>
+            </div>
+
+            <div id="connectInfo" class="muted"></div>
+
+        </form> <!-- id="connectForm" -->
+
+        <hr>
+
+        <div style="margin-bottom:8px">
+            <button id="reload">Reload Schema</button>
+        </div>
+
+        <div id="info" class="muted"></div>
+
+        <div style="margin-top:8px">
+            <label>Search/Filter tables
+                <input id="search" type="text" placeholder="search table or column name">
+            </label>
+            <label>Schema
+                <select id="schemaFilter">
+                    <option value="">All schemas</option>
+                </select>
+            </label>
+        </div>
+
+    </div> <!-- id="left" -->
+
+    <div id="right">
+
+        <div id="erdTitle">
+            <h3>Entity-Relationship Diagram</h3>
+            <b id="filterText"></b>
+        </div> <!-- id="erdTitle" -->
+
+        <div id="mermaidContainer">
+            <!-- Mermaid SVG will be inserted here -->
+        </div> <!-- id="mermaidContainer" -->
+
+
+        <div id="legendTitle">
+            <b>Table Size in 8k pages</b>
+
+            <div id="mermaidLegend">
+                <!-- Mermaid color size legend will be inserted here -->
+            </div> <!-- id="mermaidLegend" -->
+
+        </div> <!-- id="title" -->
+
+    </div> <!-- id="right" -->
+
+    <div class="popup" id="popup">
+        <!-- Popup content will be inserted here -->
+    </div> <!-- id="popup" -->
+
+    <dialog id="detailsDialog">
+        <h3 id = "detailsTableName" style="text-align: center;">Table name here</h3>
+        <div id = "detailsTableDesc">Table details here</div>
+
+        <button onclick="closeDialog()">Close</button>
+    </dialog>
+
+    <script src="generateMermaid.js"></script>
+
+</body>
+
+</html>
